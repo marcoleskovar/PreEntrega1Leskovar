@@ -9,7 +9,6 @@
 3) Que salga una alerta final diciendole cuantas cajas pidio de cada producto, al lado el peso en kilos y abajo el precio total
 
 ERRORES
-(2)- Si no va a querer ninguno de esos productos se tiene que cerrar la funcion y salir una alerta que diga 'No quieres ningun tipo de caja? Ok'
 (2-1 / 2-2)- Si no pone bien el nombre de la caja, decirle 'Ese producto no es valido! y volverle a mandar el prompt para que lo ingrese bien
 (2-2-1)- Si pone un 0 o un numero menor a 0 mandarle una alert de que no es valido y volverle a mandar el prompt para que lo escriba bien
 */
@@ -18,13 +17,14 @@ let prodA= 'T2A 6x2'
 let prodB= 'Hex T2 14x2';
 let prodC= 'Tor Alas 10x2';
 let ingresarTipo;
+let queProd;
 let unProd;
 let dosProd;
 let tresProd;
 //Solicito tipo de producto
-const cuantosTipos = (cantidadDeTipos) =>{
+const cuantosTipos = () =>{
     while(true){
-        let ingresarTipo = parseInt(prompt('-' + prodA + '\n-' + prodB + '\n-' + prodC + '\n\n' + 'Cual de estos productos va a querer comprar?\n' + '-Uno solo producto: "1"\n-Dos productos: "2"\n-Tres productos: "3"'));
+        const ingresarTipo = parseInt(prompt('-' + prodA + '\n-' + prodB + '\n-' + prodC + '\n\n' + 'Cuantos de estos productos va a querer comprar?\n' + '-Uno solo producto: "1"\n-Dos productos: "2"\n-Tres productos: "3"'));
         switch(ingresarTipo){
             case 1:
                 return 'check 1';
@@ -46,6 +46,35 @@ console.log (respuestaTipos)
 
 //Si producto es 1 o 2 decir que productos quiere (podes hacerlo con for)
 
+const queProducto = (respuestaTipos) =>{
+    let output='';
+    while(true){
+        if(respuestaTipos == 'check 1'){
+            queProd= prompt('Que producto quieres comprar (A-C)?\n\n-' + prodA + '(A)\n-' + prodB + '(B)\n-' + prodC + '(C)').toUpperCase();
+            if ((queProd !== 'A') && (queProd !== 'B') && (queProd!=='C')){
+                alert('Vuelva a ingresar')
+                queProducto(respuestaTipos)
+            }
+            return(queProd);
+        }else if(respuestaTipos == 'check 2'){
+            let resultados = '';
+            for (let i = 1; i <= 2; i++) {
+                let queProd = '';
+                while (queProd !== 'A' && queProd !== 'B' && queProd !== 'C'){
+                    queProd = prompt('Producto ' + i + '\n\n' + prodA + ' (A)\n' + prodB + ' (B)\n' + prodC + ' (C)\n\n' + 'Para seleccionarlo escriba la letra (A-C)').toUpperCase();
+                    if (queProd !== 'A' && queProd !== 'B' && queProd !== 'C'){
+                        alert('Ingrese un valor válido');
+                    }
+                }
+                resultados += queProd;
+            }
+            return resultados;
+        }else{
+            return('ABC')
+        }
+    } 
+}
+console.log(queProducto(respuestaTipos))
 //Decir cuantas cajas quiere de cada producto
 
 //Si son 3 cajas pasar al paso anterior
