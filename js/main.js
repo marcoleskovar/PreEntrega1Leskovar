@@ -88,7 +88,7 @@ const cuantasCajas = (respuestaQueProducto)=>{
                     alert('Tienes que ingresar un valor numerico');
                 }
             }
-            return console.log(queCant);
+            return (queCant);
         }else if (respuestaQueProducto == 'B'){
             queCant = 0;
             while (isNaN(queCant) || (queCant)<=0){
@@ -97,7 +97,7 @@ const cuantasCajas = (respuestaQueProducto)=>{
                     alert('Tienes que ingresar un valor numerico');
                 }
             }
-            return console.log(queCant);
+            return(queCant);
         }else if (respuestaQueProducto == 'C'){
             queCant = 0;
             while (isNaN(queCant) || (queCant)<=0){
@@ -106,7 +106,7 @@ const cuantasCajas = (respuestaQueProducto)=>{
                     alert('Tienes que ingresar un valor numerico');
                 }
             }
-            return console.log(queCant);
+            return(queCant);
         }else if (respuestaQueProducto == 'ABC'){
             valA=0;
             valB=0;
@@ -186,9 +186,9 @@ let desc= 10;
 const precioTotal = (precio, respuestaQueCantidad) => {
     let resultados = '';
     let descuento = -1;
-    while (descuento < 0 || descuento > 10){
+    while (descuento < 0 || descuento > 10 || isNaN(descuento)){
         descuento = parseInt(prompt('Ingrese su descuento (0-10)'));
-        if (descuento < 0 || descuento > 10){
+        if (descuento < 0 || descuento > 10 || isNaN(descuento)){
         alert('Ingrese un valor válido');
     }
     resultados += descuento; 
