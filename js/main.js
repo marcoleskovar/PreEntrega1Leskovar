@@ -81,7 +81,7 @@ const cuantasCajas = (respuestaQueProducto)=>{
     while(true){
         //Si quiere un producto o tres productos
         if(respuestaQueProducto == 'A'){
-            queCant = '';
+            queCant = 0;
             while (isNaN(queCant) || (queCant)<=0){
                 queCant = parseInt(prompt ('Cuantas cajas queres de ' + prodA + '?'));
                 if (isNaN(queCant) || (queCant)<=0){
@@ -90,7 +90,7 @@ const cuantasCajas = (respuestaQueProducto)=>{
             }
             return console.log(queCant);
         }else if (respuestaQueProducto == 'B'){
-            queCant = '';
+            queCant = 0;
             while (isNaN(queCant) || (queCant)<=0){
                 queCant = parseInt(prompt ('Cuantas cajas queres de ' + prodB + '?'));
                 if (isNaN(queCant) || (queCant)<=0){
@@ -99,7 +99,7 @@ const cuantasCajas = (respuestaQueProducto)=>{
             }
             return console.log(queCant);
         }else if (respuestaQueProducto == 'C'){
-            queCant = '';
+            queCant = 0;
             while (isNaN(queCant) || (queCant)<=0){
                 queCant = parseInt(prompt ('Cuantas cajas queres de ' + prodC + '?'));
                 if (isNaN(queCant) || (queCant)<=0){
@@ -177,9 +177,26 @@ const cuantasCajas = (respuestaQueProducto)=>{
         }
     }    
 }
-
 let respuestaQueCantidad = (cuantasCajas(respuestaQueProducto));
 console.log(respuestaQueCantidad)
 
+let precio = 1000;
+const iva = 21;
+let desc= 10;
+const precioTotal = (precio, respuestaQueCantidad) => {
+    let resultados = '';
+    let descuento = -1;
+    while (descuento < 0 || descuento > 10){
+        descuento = parseInt(prompt('Ingrese su descuento (0-10)'));
+        if (descuento < 0 || descuento > 10){
+        alert('Ingrese un valor válido');
+    }
+    resultados += descuento; 
+    }
+    let cantidad = parseInt(respuestaQueCantidad);
+    let total = (precio * cantidad )* (1 + (iva/100));
+    let precioFinal= total*(1-((descuento)*0.01))
+    alert('El total de su pedido con el IVA incluido es de: $' + precioFinal +'\n\nGracias por su compra!')
+};
 
-//Calcular el precio
+precioTotal(precio, respuestaQueCantidad);
