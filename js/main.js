@@ -196,7 +196,7 @@ const precioTotal = (precio, respuestaQueCantidad) => {
     let cantidad = parseInt(respuestaQueCantidad);
     let total = (precio * cantidad )* (1 + (iva/100));
     let precioFinal= total*(1-((descuento)*0.01))
-    alert('El total de su pedido con el IVA incluido es de: $' + precioFinal +'\n\nGracias por su compra!')
+    alert('El total de su pedido con el IVA incluido con un descuento del ' + descuento + '% es de: $' + precioFinal.toFixed(2) +'\n\nGracias por su compra!')
 };
 
 precioTotal(precio, respuestaQueCantidad);
